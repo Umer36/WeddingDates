@@ -2,6 +2,13 @@
 
 A beautiful, modern wedding schedule webpage showcasing the wedding celebrations of three friends: Aman Sayyad, Aman Vijapure, and Sahil Pakhali.
 
+## 🌐 Live Demo
+
+**[View Live Website](https://wedding-dates.vercel.app/)**
+
+- **Vercel**: https://wedding-dates.vercel.app/
+- **GitHub**: https://github.com/Umer36/WeddingDates
+
 ## Features
 
 - 🎨 Modern, elegant design with gradient backgrounds
