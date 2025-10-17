@@ -42,6 +42,16 @@
             padding: 20px 0;
             color: white;
             margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideInUp 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
@@ -79,15 +89,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24, #667eea, #764ba2);
-            background-size: 400% 400%;
-            animation: gradientShift 3s ease-in-out;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24, #667eea, #764ba2, #ff9ff3, #f368e0);
+            background-size: 600% 600%;
+            animation: gradientShift 4s ease-in-out infinite;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1000;
             opacity: 1;
-            transition: opacity 0.8s ease-out;
+            transition: opacity 1s ease-out;
+            overflow: hidden;
         }
 
         .welcome-overlay.fade-out {
@@ -99,6 +110,8 @@
             text-align: center;
             color: white;
             animation: welcomeAnimation 3s ease-out;
+            position: relative;
+            z-index: 10;
         }
 
         .welcome-content h1 {
@@ -106,6 +119,12 @@
             font-size: 4rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: titlePulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titlePulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
         }
 
         .welcome-content p {
@@ -116,33 +135,153 @@
         .wedding-rings {
             font-size: 3rem;
             margin: 20px 0;
-            animation: ringRotate 2s ease-in-out infinite alternate;
+            animation: ringRotate 2s ease-in-out infinite alternate, ringBounce 1.5s ease-in-out infinite;
+        }
+
+        @keyframes ringBounce {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
         }
 
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
             100% { background-position: 0% 50%; }
         }
 
         @keyframes welcomeAnimation {
             0% {
                 opacity: 0;
-                transform: translateY(30px) scale(0.9);
+                transform: translateY(50px) scale(0.8) rotate(-5deg);
             }
-            50% {
+            30% {
+                opacity: 0.7;
+                transform: translateY(-10px) scale(1.1) rotate(2deg);
+            }
+            60% {
                 opacity: 1;
-                transform: translateY(0) scale(1.05);
+                transform: translateY(5px) scale(0.95) rotate(-1deg);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0) scale(1) rotate(0deg);
             }
         }
 
         @keyframes ringRotate {
-            0% { transform: rotate(-5deg); }
-            100% { transform: rotate(5deg); }
+            0% { transform: rotate(-10deg); }
+            100% { transform: rotate(10deg); }
+        }
+
+        .welcome-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .big-heart {
+            position: absolute;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.3);
+            animation: bigHeartBounce 3s ease-in-out infinite;
+        }
+
+        .big-heart:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .big-heart:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-delay: 0.5s;
+        }
+
+        .big-heart:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 1s;
+        }
+
+        .big-heart:nth-child(4) {
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 1.5s;
+        }
+
+        .big-heart:nth-child(5) {
+            top: 50%;
+            left: 5%;
+            animation-delay: 2s;
+        }
+
+        .big-heart:nth-child(6) {
+            top: 60%;
+            right: 5%;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes bigHeartBounce {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.3;
+            }
+            25% {
+                transform: scale(1.3) rotate(5deg);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(0.8) rotate(-5deg);
+                opacity: 0.4;
+            }
+            75% {
+                transform: scale(1.1) rotate(3deg);
+                opacity: 0.5;
+            }
+        }
+
+        .floating-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: particleFloat 8s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px) scale(0);
+                opacity: 0;
+            }
         }
 
         .container {
@@ -153,8 +292,17 @@
             border-radius: 15px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             overflow: hidden;
-            animation: fadeInUp 0.8s ease-out;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            animation: containerAppear 1.2s ease-out 1s forwards;
+        }
+
+        @keyframes containerAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         @keyframes fadeInUp {
@@ -178,6 +326,16 @@
             position: relative;
             overflow: hidden;
             min-height: 160px;
+            opacity: 0;
+            transform: translateX(-100%);
+            animation: slideInLeft 1s ease-out 1.5s forwards, gradientWave 8s ease-in-out 2s infinite;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         @keyframes gradientWave {
@@ -290,6 +448,9 @@
 
         .schedule-grid {
             padding: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 2.5s forwards;
         }
 
         .event-card {
@@ -424,6 +585,9 @@
             padding: 25px;
             border-top: 1px solid #e9ecef;
             margin-top: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 3s forwards;
         }
 
         .legend h3 {
@@ -490,6 +654,9 @@
         .table-section {
             padding: 30px;
             border-bottom: 1px solid #e9ecef;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 2s forwards;
         }
 
         .table-section h3 {
@@ -750,9 +917,44 @@
 
         .heart {
             position: absolute;
-            color: rgba(255, 255, 255, 0.15);
-            font-size: 20px;
+            color: rgba(255, 255, 255, 0.2);
             animation: float 8s ease-in-out infinite;
+        }
+
+        .big-bouncing-heart {
+            position: absolute;
+            font-size: 3rem;
+            animation: bigBounce 4s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes bigBounce {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0.3) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.8;
+                transform: translateY(80vh) translateX(-50px) scale(1.2) rotate(45deg);
+            }
+            30% {
+                transform: translateY(60vh) translateX(30px) scale(0.9) rotate(-30deg);
+            }
+            50% {
+                transform: translateY(40vh) translateX(-20px) scale(1.5) rotate(60deg);
+                opacity: 1;
+            }
+            70% {
+                transform: translateY(20vh) translateX(40px) scale(1.1) rotate(-45deg);
+            }
+            85% {
+                transform: translateY(5vh) translateX(-30px) scale(0.8) rotate(30deg);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-50px) translateX(20px) scale(0.2) rotate(90deg);
+                opacity: 0;
+            }
         }
 
         .sparkle {
@@ -764,14 +966,26 @@
 
         @keyframes float {
             0% {
-                transform: translateY(100vh) rotate(0deg);
+                transform: translateY(100vh) translateX(var(--random-x, 0px)) rotate(0deg);
                 opacity: 0;
             }
-            10%, 90% {
+            10% {
+                opacity: 1;
+            }
+            25% {
+                transform: translateY(75vh) translateX(calc(var(--random-x, 0px) - 30px)) rotate(90deg);
+            }
+            50% {
+                transform: translateY(50vh) translateX(calc(var(--random-x, 0px) + 20px)) rotate(180deg);
+            }
+            75% {
+                transform: translateY(25vh) translateX(calc(var(--random-x, 0px) - 15px)) rotate(270deg);
+            }
+            90% {
                 opacity: 1;
             }
             100% {
-                transform: translateY(-100px) rotate(360deg);
+                transform: translateY(-100px) translateX(calc(var(--random-x, 0px) + 40px)) rotate(360deg);
                 opacity: 0;
             }
         }
@@ -804,6 +1018,15 @@
 <body>
     <!-- Welcome Animation -->
     <div class="welcome-overlay" id="welcomeOverlay">
+        <div class="welcome-hearts">
+            <div class="big-heart">❤️</div>
+            <div class="big-heart">💖</div>
+            <div class="big-heart">💕</div>
+            <div class="big-heart">❤️</div>
+            <div class="big-heart">💗</div>
+            <div class="big-heart">💖</div>
+        </div>
+        <div class="floating-particles"></div>
         <div class="welcome-content">
             <h1>💕 Welcome 💕</h1>
             <div class="wedding-rings">💍 💍</div>
@@ -813,15 +1036,21 @@
 
     <div class="main-content" id="mainContent">
     <div class="floating-hearts">
-        <i class="fas fa-heart heart" style="left: 10%; animation-delay: 0s;"></i>
-        <i class="fas fa-heart heart" style="left: 20%; animation-delay: 1s;"></i>
-        <i class="fas fa-heart heart" style="left: 30%; animation-delay: 2s;"></i>
-        <i class="fas fa-heart heart" style="left: 40%; animation-delay: 3s;"></i>
-        <i class="fas fa-heart heart" style="left: 50%; animation-delay: 4s;"></i>
-        <i class="fas fa-heart heart" style="left: 60%; animation-delay: 5s;"></i>
-        <i class="fas fa-heart heart" style="left: 70%; animation-delay: 6s;"></i>
-        <i class="fas fa-heart heart" style="left: 80%; animation-delay: 7s;"></i>
-        <i class="fas fa-heart heart" style="left: 90%; animation-delay: 8s;"></i>
+        <i class="fas fa-heart heart" style="left: 10%; animation-delay: 0s; font-size: 25px;"></i>
+        <i class="fas fa-heart heart" style="left: 20%; animation-delay: 1s; font-size: 30px;"></i>
+        <i class="fas fa-heart heart" style="left: 30%; animation-delay: 2s; font-size: 20px;"></i>
+        <i class="fas fa-heart heart" style="left: 40%; animation-delay: 3s; font-size: 35px;"></i>
+        <i class="fas fa-heart heart" style="left: 50%; animation-delay: 4s; font-size: 28px;"></i>
+        <i class="fas fa-heart heart" style="left: 60%; animation-delay: 5s; font-size: 22px;"></i>
+        <i class="fas fa-heart heart" style="left: 70%; animation-delay: 6s; font-size: 32px;"></i>
+        <i class="fas fa-heart heart" style="left: 80%; animation-delay: 7s; font-size: 26px;"></i>
+        <i class="fas fa-heart heart" style="left: 90%; animation-delay: 8s; font-size: 24px;"></i>
+        
+        <div class="big-bouncing-heart" style="left: 15%; animation-delay: 1s;">❤️</div>
+        <div class="big-bouncing-heart" style="left: 45%; animation-delay: 3s;">💖</div>
+        <div class="big-bouncing-heart" style="left: 75%; animation-delay: 5s;">💕</div>
+        <div class="big-bouncing-heart" style="left: 25%; animation-delay: 7s;">💗</div>
+        <div class="big-bouncing-heart" style="left: 65%; animation-delay: 2s;">💝</div>
         
         <i class="fas fa-star sparkle" style="left: 15%; animation-delay: 2s;"></i>
         <i class="fas fa-star sparkle" style="left: 35%; animation-delay: 4s;"></i>
@@ -1062,19 +1291,65 @@
     <script>
         // Welcome animation
         window.addEventListener('load', function() {
+            // Create floating particles
+            createFloatingParticles();
+            
             setTimeout(() => {
                 document.getElementById('welcomeOverlay').classList.add('fade-out');
                 document.getElementById('mainContent').classList.add('show');
-            }, 3000);
+            }, 4000);
+        });
+
+        function createFloatingParticles() {
+            const particleContainer = document.querySelector('.floating-particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                particleContainer.appendChild(particle);
+            }
+        }
+
+        // Add random movements to hearts
+        document.addEventListener('DOMContentLoaded', function() {
+            const hearts = document.querySelectorAll('.heart');
+            const bigHearts = document.querySelectorAll('.big-bouncing-heart');
+            
+            hearts.forEach((heart, index) => {
+                const randomDuration = Math.random() * 4 + 6; // 6-10 seconds
+                const randomDelay = Math.random() * 3;
+                heart.style.animationDuration = randomDuration + 's';
+                heart.style.animationDelay = randomDelay + 's';
+                
+                // Add random horizontal movement
+                const randomX = (Math.random() - 0.5) * 100; // -50 to 50px
+                heart.style.setProperty('--random-x', randomX + 'px');
+            });
+            
+            bigHearts.forEach((heart, index) => {
+                const randomDuration = Math.random() * 2 + 3; // 3-5 seconds
+                const randomDelay = Math.random() * 4;
+                heart.style.animationDuration = randomDuration + 's';
+                heart.style.animationDelay = randomDelay + 's';
+            });
         });
         // Add some interactive animations
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.event-card');
             
+            // Stagger event card animations
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.animation = `fadeInUp 0.8s ease-out ${3.5 + index * 0.3}s forwards`;
+            });
+            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+                        entry.target.style.animation += ', cardHover 0.3s ease-out';
                     }
                 });
             });
@@ -1083,6 +1358,17 @@
                 observer.observe(card);
             });
         });
+
+        // Enhanced keyframe for card hover
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes cardHover {
+                0% { transform: translateY(0); }
+                50% { transform: translateY(-3px); }
+                100% { transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>

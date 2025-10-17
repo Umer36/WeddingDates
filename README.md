@@ -13,11 +13,13 @@ A beautiful, modern wedding schedule webpage showcasing the wedding celebrations
 
 - 🎨 Modern, elegant design with gradient backgrounds
 - 📱 Fully responsive for all devices
-- ✨ Smooth animations and hover effects
-- 💝 Floating heart animations
+- ✨ Enhanced welcome animations with big bouncing hearts
+- 💝 Randomized floating heart animations with zigzag movements
+- 🎪 Sequential content loading with staggered animations
 - 🎯 Color-coded events for each couple
 - 📅 Timeline-style event display
 - 🌟 Glass-morphism design elements
+- ⭐ Floating particles and dynamic background effects
 
 ## Deployment to GitHub Pages
 
