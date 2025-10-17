@@ -1,4 +1,4 @@
-# Wedding Celebrations 2024 🎉
+# Wedding Celebrations 2025 🎉
 
 A beautiful, modern wedding schedule webpage showcasing the wedding celebrations of three friends: Aman Sayyad, Aman Vijapure, and Sahil Pakhali.
 
@@ -18,7 +18,7 @@ A beautiful, modern wedding schedule webpage showcasing the wedding celebrations
 
 1. **Create a new repository on GitHub**
    - Go to [GitHub](https://github.com) and create a new repository
-   - Name it something like `wedding-schedule` or `wedding-celebrations-2024`
+   - Name it something like `wedding-schedule` or `wedding-celebrations-2025`
    - Make it public
 
 2. **Upload files**
