@@ -13,9 +13,12 @@ A beautiful, modern wedding schedule webpage showcasing the wedding celebrations
 
 - 🎨 Modern, elegant design with gradient backgrounds
 - 📱 Fully responsive for all devices
+- 💒 Romantic couple animation - bride and groom come together
 - ✨ Enhanced welcome animations with big bouncing hearts
 - 💝 Randomized floating heart animations with zigzag movements
+- 💥 Heart explosion effect when couple meets
 - 🎪 Sequential content loading with staggered animations
+- 🎬 Pro-level 3D animations and effects
 - 🎯 Color-coded events for each couple
 - 📅 Timeline-style event display
 - 🌟 Glass-morphism design elements
